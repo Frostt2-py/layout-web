@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Web Sederhana</title>
+  <style>
+    :root {
+      --gap: 1rem;
+      --bg: #f7f7f8;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --text: #0f172a;
+      --muted: #475569;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    .page {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      grid-template-columns: 100%;
+    }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    nav {
+      background: #1f2937;
+      color: white;
+    }
+    .navwrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      align-items: center;
+      padding: .5rem 1rem;
+    }
+    .brand { font-weight: 700; padding: .5rem 0; margin-right: auto; }
+    .menu {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .menu a {
+      color: white;
+      text-decoration: none;
+      padding: .5rem .75rem;
+      border-radius: .5rem;
+    }
+    .menu a:hover { background: rgba(255,255,255,.12); }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--gap);
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "main"
+        "aside";
+    }
+    article { grid-area: main; background: var(--card); border: 1px solid var(--border); padding: 1rem; border-radius: .75rem; }
+    aside   { grid-area: aside; background: var(--card); border: 1px solid var(--border); padding: 1rem; border-radius: .75rem; }
+
+    @media (min-width: 768px) {
+      main {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: "main aside";
+      }
+    }
+    @media (min-width: 1100px) {
+      main {
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas: "aside main aside2";
+      }
+      aside { grid-area: aside; }
+      .aside-right { grid-area: aside2; }
+    }
+
+    footer {
+      margin-top: var(--gap);
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 1rem;
+      color: var(--muted);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: .5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Zidan University</h1>
+      <p>Educating professionals. Creating and applying knowledge. Engaging our communities.</p>
+    </header>
+
+    <nav>
+      <div class="navwrap">
+        <div class="brand">Brand</div>
+        <div class="menu">
+          <a href="#">Beranda</a>
+          <a href="#">Produk</a>
+          <a href="#">Blog</a>
+          <a href="#">Kontak</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <aside>
+        <h2>Navigasi / Kategori</h2>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+        </ul>
+      </aside>
+
+      <article>
+        <h2>Hi kakak-kakak yang cantik dan ganteng</h2>
+        <p>hi halo nihao hai</p>
+      </article>
+
+      <aside class="aside-right">
+        <h2>Sunset</h2>
+        <picture>
+          <source srcset="sunset.avif" type="image/avif">
+          <img src="sunset.avif" alt="Sunset">
+        </picture>
+      </aside>
+    </main>
+
+    <footer>© 2025 — Hak cipta Anda</footer>
+  </div>
+</body>
+</html>
